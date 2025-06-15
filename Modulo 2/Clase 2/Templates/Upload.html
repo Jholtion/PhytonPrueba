@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir archivo</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h1 class="card-title text-center mb-4">Subir Archivo CSV</h1>
+                        <form action="/" method="post" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <input type="file" class="form-control" name="file" accept=".csv" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Subir</button>
+                            </div>
+                        </form>
+                        {% if resumen %}
+                        <div class="mt-5">
+                            <h2 class="h5">Resumen del archivo subido:</h2>
+                            <ul class="list-group mb-2">
+                                <li class="list-group-item">Filas: {{resumen.Filas}}</li>
+                                <li class="list-group-item">Columnas: {{resumen.Columnas}}</li>
+                                <li class="list-group-item">
+                                    Nombres Columnas:
+                                    <ul class="mt-2">
+                                        {% for col in resumen.NombresColumnas %}
+                                            <li>{{col}}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS (optional, for interactivity) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
